@@ -1,0 +1,30 @@
+/* hey sigmas */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+body {
+    background-color: #171717;
+    color: #FFF;
+    font-family: Inter, Arial, sans-serif;
+}
+.toolbar {
+    background-color: #1F1F1F;
+    color: rgba(255, 255, 255, 0.80);
+    height: 70px;
+    outline-width: 1;
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 20px;
+}
+.content {
+    max-width: 1000px;
+}
+h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 120px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
