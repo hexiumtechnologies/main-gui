@@ -36,12 +36,12 @@
   <main class="flex-grow flex items-center justify-center">
     <section class="hero py-16 sm:py-20 text-center">
       <div class="container mx-auto px-4 max-w-screen-sm">
-        <div style="width: 580px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+        <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
           <img src="username.svg" style="margin: 10px;">
           <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
             Welcome to the Hexium community!
           </h2>
-          <p style="font-size: 20px;">Ready to join? Type a username below and see if it is available to use.</p>
+          <p style="font-size: 16px;">Ready to join? Type a username below and see if it is available to use.</p>
           <input 
             type="text" 
             id="username" 
@@ -49,11 +49,13 @@
             minlength="3"
             maxlength="20"
             placeholder="Create a username"
-            style="width: 400px; height: 50px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+            class="sm:[width:300px] md:[width:350px]"
+            style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
           >
           <button 
             id="continue"
-            style="width: 400px; height: 50px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+            class="sm:[width:300px] md:[width:350px]"
+            style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
           >
             Continue
           </button>
