@@ -91,11 +91,13 @@
               minlength="8"
               placeholder="Create a password"
               class="[width:75%] md:[width:350px]"
-              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"          >
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"          
+            >
             <button 
               id="continue2"
               class="[width:75%] md:[width:350px]"
-              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"          >
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"          
+            >
               Continue
             </button>
           </div>
@@ -119,8 +121,17 @@
               name="birthdate" 
               placeholder="dd/mm/yyyy"
               class="[width:75%] md:[width:350px]"
-              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        
+            >
+            <button 
+              id="continue3"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; margin-top: 16px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        
+            >
+              Continue
+            </button>
           </div>
+        </div>
       </section>
     </div>
     
@@ -140,35 +151,14 @@
               name="email" 
               placeholder="example@example.com"
               class="[width:75%] md:[width:350px]"
-              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
-          </div>
-      </section>
-    </div>
-    
-    <!-- Step 5: Final -->
-    <div id="step5" class="step">
-      <section class="hero py-16 sm:py-20 text-center">
-        <div class="container mx-auto px-4 max-w-screen-sm">
-          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-            <img src="/img/exit-onboarding.svg" style="margin: 10px;">
-            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-              <span>Welcome, </span>
-              <span class="username"></span>
-              <span>!</span>
-            </h2>
-            <p style="font-size: 18px;">Now you can explore Hexium Canvas! Make sure to verify your email address to access more features.</p>
-          
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        
+            >
             <button 
-              id="download"
+              id="continue4"
               class="[width:75%] md:[width:350px]"
-              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
-              Download Hexium Designer
-            </button>
-            <button 
-              id="continue5"
-              class="[width:75%] md:[width:350px]"
-              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
-              Continue
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        
+            >
+              Create Account
             </button>
           </div>
         </div>
@@ -177,50 +167,42 @@
   </main>
 
   <script>
-    // Validate username format (simple alphanumeric, 3-20 chars)
-    function validateUsername(name) {
-      return /^[a-zA-Z0-9_-]{3,20}$/.test(name);
-    }
-    // Validate email using simple regex
-    function validateEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // Basic password validation: min 8 chars
-    function validatePassword(pwd) {
-      return pwd.length >= 8;
-    }
-
-    // Steps
-    const steps = ["step1", "step2", "step3", "step4", "step5"];
+    const steps = ["step1", "step2", "step3", "step4"];
     let currentStepIndex = 0;
-    const userData = { school: null };
+
+    const userData = {
+      username: null,
+      password: null,
+      birthdate: null,
+      email: null,
+    };
 
     function showStep(index) {
-      steps.forEach((id, i) => {
-        document.getElementById(id).classList.toggle("current", i === index);
+      steps.forEach((stepId, i) => {
+        const el = document.getElementById(stepId);
+        if (i === index) {
+          el.classList.add("current");
+        } else {
+          el.classList.remove("current");
+        }
       });
       currentStepIndex = index;
-      if (index === steps.length - 1) {
-        document.querySelector("#step5 .username").textContent = userData.username || "";
-      }
     }
 
     document.getElementById("continue1").addEventListener("click", () => {
       const username = document.getElementById("username").value.trim();
-      if (!validateUsername(username)) {
-        alert("Please enter a valid username (3-20 letters, numbers, _ or -).");
+      if (!username || username.length < 3) {
+        alert("Please enter a valid username with at least 3 characters.");
         return;
       }
-      // Simulate username availability check (always available here)
       userData.username = username;
       showStep(1);
     });
 
     document.getElementById("continue2").addEventListener("click", () => {
       const password = document.getElementById("password").value;
-      if (!validatePassword(password)) {
-        alert("Password must be at least 8 characters long.");
+      if (!password || password.length < 8) {
+        alert("Please enter a password with at least 8 characters.");
         return;
       }
       userData.password = password;
@@ -233,33 +215,50 @@
       showStep(3);
     });
 
-    document.getElementById("continue4").addEventListener("click", () => {
-      const email = document.getElementById("email").value.trim();
-      if (!validateEmail(email)) {
-        alert("Please enter a valid email address.");
+    document.getElementById("continue4").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim() || null;
+      userData.email = email;
+
+      // Validate email format if not empty
+      if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Please enter a valid email address or leave it blank.");
         return;
       }
-      userData.email = email;
-      showStep(4);
-    });
 
-    document.getElementById("continue5").addEventListener("click", () => {
-      // Send GET request to /api/accounts/new
-      const username = encodeURIComponent(userData.username);
-      const password = encodeURIComponent(userData.password);
-      const school = userData.school ? encodeURIComponent(userData.school) : "null";
-      const birthday = userData.birthdate ? encodeURIComponent(userData.birthdate) : "null";
+      if (!userData.username || !userData.password) {
+        alert("Username and password are required.");
+        return;
+      }
 
-      fetch(`/api/accounts/new?username=${username}&password=${password}&school=${school}&birthday=${birthday}`, {
-        method: "GET"
-      }).finally(() => {
-        window.location.href = "https://hexiumapps.com";
+      // Build URL for GET request with user data
+      const params = new URLSearchParams({
+        username: userData.username,
+        password: userData.password,
+        school: "null",
+        birthday: userData.birthdate || "null",
       });
+
+      try {
+        const response = await fetch(`/api/accounts/new?${params.toString()}`, {
+          method: "GET",
+        });
+
+        if (!response.ok) {
+          alert("Account creation failed. Please try again.");
+          return;
+        }
+
+        // On success, redirect to hexiumapps.com
+        window.location.href = "https://hexiumapps.com";
+      } catch (err) {
+        alert("Error connecting to the server. Please try again.");
+      }
     });
 
-    document.getElementById("download").addEventListener("click", () => {
-      window.location.href = "/pricing";
-    });
+    // Redirect for download hexium designer (assuming a link/button exists)
+    // Example: document.getElementById("downloadHexiumDesigner").addEventListener("click", () => {
+    //   window.location.href = "/pricing";
+    // });
   </script>
 </body>
 </html>
