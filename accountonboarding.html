@@ -3,263 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/hexium.png" />
-  <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations." />
-  <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript" />
-  <title>Create an account - Hexium</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/styles/home.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
+  <title>Account Creation Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    input:focus {
-      outline: none !important;
-      box-shadow: none !important;
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f9fafb;
+      color: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 420px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-weight: 600;
+      margin-bottom: 24px;
+      font-size: 1.75rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus {
+      border-color: #2563eb;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1e40af;
+    }
+    .hidden {
+      display: none;
+    }
+    .nav-text {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    .nav-text a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .nav-text a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <header class="toolbar">
-    <a href="/" aria-label="Hexium Home">
-      <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
-    </a>
-    <nav class="nav-links" role="navigation" aria-label="Primary Navigation">
-      <a href="https://forums.hexiumapps.com/">Forums</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/about">About</a>
-      <a href="/account">Account</a>
-    </nav>
-  </header>
+<body>
+  <div class="container">
+    <!-- Page 1: Personal Information -->
+    <form id="page1">
+      <h2>Personal Information</h2>
+      <label for="firstName">First Name</label>
+      <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
+      <label for="lastName">Last Name</label>
+      <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
+      <button type="submit">Next</button>
+    </form>
 
-  <main class="flex-grow flex items-center justify-center">
-    <section class="hero py-16 sm:py-20 text-center w-full max-w-screen-sm px-4">
-      <!-- Step Containers -->
-      <div id="step-username" class="step flex flex-col items-center gap-4">
-        <img src="username.svg" alt="Username Icon" style="margin:10px" />
-        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          Welcome to the Hexium community!
-        </h2>
-        <p style="font-size: 16px;">Ready to join? Type a username below and see if it is available to use.</p>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          minlength="3"
-          maxlength="20"
-          placeholder="Create a username"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
-          autocomplete="off"
-          required
-        />
-        <button
-          id="continue-username"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
-        >
-          Continue
-        </button>
-      </div>
+    <!-- Page 2: Contact Information -->
+    <form id="page2" class="hidden">
+      <h2>Contact Information</h2>
+      <label for="email">Email Address</label>
+      <input id="email" name="email" type="email" required autocomplete="email" />
+      <label for="phone">Phone Number</label>
+      <input id="phone" name="phone" type="tel" pattern="^\+?[0-9\s\-]{7,15}$" placeholder="+1234567890" autocomplete="tel" />
+      <button type="submit">Next</button>
+    </form>
 
-      <div id="step-password" class="step hidden flex flex-col items-center gap-4">
-        <img src="password.svg" alt="Password Icon" style="margin:10px" />
-        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          Secure your account.
-        </h2>
-        <p style="font-size: 20px;">Create a password that’s secure, yet easy to remember.</p>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          minlength="8"
-          placeholder="Create a password"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
-          required
-        />
-        <button
-          id="continue-password"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
-        >
-          Continue
-        </button>
-      </div>
+    <!-- Page 3: Security Setup -->
+    <form id="page3" class="hidden">
+      <h2>Security Setup</h2>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password" />
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" name="confirmPassword" type="password" required minlength="8" autocomplete="new-password" />
+      <button type="submit">Create Account</button>
+    </form>
 
-      <div id="step-birthdate" class="step hidden flex flex-col items-center gap-4 scale-90">
-        <img src="birthdate.svg" alt="Birthdate Icon" style="margin:10px" />
-        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          What’s your birthdate?
-        </h2>
-        <p style="font-size: 18px;">We use your birthdate to create an age-appropriate experience for children.</p>
-        <input
-          type="date"
-          id="birthdate"
-          name="birthdate"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
-          required
-        />
-        <button
-          id="continue-birthdate"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
-        >
-          Continue
-        </button>
-      </div>
-
-      <div id="step-email" class="step hidden flex flex-col items-center gap-4 scale-90">
-        <img src="email.svg" alt="Email Icon" style="margin:10px" />
-        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          What’s your email address?
-        </h2>
-        <p style="font-size: 18px;">
-          Your email can be used to recover your account if you forget your password and for 2-factor authentication.
-        </p>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="example@example.com"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
-          required
-        />
-        <button
-          id="continue-email"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
-        >
-          Continue
-        </button>
-      </div>
-
-      <div id="step-school" class="step hidden flex flex-col items-center gap-4 scale-90">
-        <img src="school.svg" alt="School Icon" style="margin:10px" />
-        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          What school do you attend? (Optional)
-        </h2>
-        <p style="font-size: 18px;">This helps us personalize your experience better.</p>
-        <input
-          type="text"
-          id="school"
-          name="school"
-          placeholder="Your school name"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
-        />
-        <button
-          id="continue-school"
-          class="[width:75%] md:[width:350px]"
-          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
-        >
-          Continue
-        </button>
-      </div>
-
-      <div id="step-finish" class="step hidden flex flex-col items-center gap-4">
-        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
-          Account Created Successfully!
-        </h2>
-        <p style="font-size: 20px;">Welcome to Hexium. You can now explore and build amazing projects.</p>
-        <a href="/" class="text-sm text-blue-400 underline mt-4">Go to homepage</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="text-center p-4 border-t border-gray-700 text-gray-400 text-xs">
-    &copy; 2025 Hexium. All rights reserved.
-  </footer>
+    <!-- Success Message -->
+    <div id="successMessage" class="hidden" style="text-align:center;">
+      <h2>Account Created!</h2>
+      <p>Thank you for signing up. Your account has been successfully created.</p>
+    </div>
+  </div>
 
   <script>
-    // Steps in order
-    const steps = [
-      'step-username',
-      'step-password',
-      'step-birthdate',
-      'step-email',
-      'step-school',
-      'step-finish'
-    ];
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+    const successMessage = document.getElementById('successMessage');
 
-    let currentStepIndex = 0;
-
-    function showStep(index) {
-      steps.forEach((id, i) => {
-        document.getElementById(id).classList.toggle('hidden', i !== index);
-      });
-    }
-
-    showStep(currentStepIndex);
-
-    // Username validation function (basic)
-    function isUsernameValid(username) {
-      return /^[a-zA-Z0-9_]{3,20}$/.test(username);
-    }
-
-    // Password validation function (basic)
-    function isPasswordValid(password) {
-      return password.length >= 8;
-    }
-
-    // Email validation
-    function isEmailValid(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    document.getElementById('continue-username').addEventListener('click', () => {
-      const usernameInput = document.getElementById('username');
-      if (!isUsernameValid(usernameInput.value)) {
-        alert('Username must be 3-20 characters and contain only letters, numbers, and underscores.');
-        usernameInput.focus();
-        return;
-      }
-      // Here you could add async check for username availability if needed
-      currentStepIndex++;
-      showStep(currentStepIndex);
+    page1.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Could add validation here if needed
+      page1.classList.add('hidden');
+      page2.classList.remove('hidden');
     });
 
-    document.getElementById('continue-password').addEventListener('click', () => {
-      const passwordInput = document.getElementById('password');
-      if (!isPasswordValid(passwordInput.value)) {
-        alert('Password must be at least 8 characters long.');
-        passwordInput.focus();
-        return;
-      }
-      currentStepIndex++;
-      showStep(currentStepIndex);
+    page2.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Could add validation here if needed
+      page2.classList.add('hidden');
+      page3.classList.remove('hidden');
     });
 
-    document.getElementById('continue-birthdate').addEventListener('click', () => {
-      const birthdateInput = document.getElementById('birthdate');
-      if (!birthdateInput.value) {
-        alert('Please enter your birthdate.');
-        birthdateInput.focus();
+    page3.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const password = page3.password.value;
+      const confirmPassword = page3.confirmPassword.value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
         return;
       }
-      // Optionally validate age here
-      currentStepIndex++;
-      showStep(currentStepIndex);
-    });
 
-    document.getElementById('continue-email').addEventListener('click', () => {
-      const emailInput = document.getElementById('email');
-      if (!isEmailValid(emailInput.value)) {
-        alert('Please enter a valid email address.');
-        emailInput.focus();
-        return;
-      }
-      currentStepIndex++;
-      showStep(currentStepIndex);
-    });
+      // Final submission logic here (e.g. send to backend)
 
-    document.getElementById('continue-school').addEventListener('click', () => {
-      // School is optional, no validation needed
-      currentStepIndex++;
-      showStep(currentStepIndex);
+      page3.classList.add('hidden');
+      successMessage.classList.remove('hidden');
     });
   </script>
 </body>
