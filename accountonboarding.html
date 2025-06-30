@@ -239,7 +239,7 @@
       });
 
       try {
-        const response = await fetch(`/api/accounts/new?${params.toString()}`, {
+        const response = await fetch(`https://cooldevvv.pythonanywhere.com/api/accounts/new?${params.toString()}`, {
           method: "GET",
         });
 
@@ -254,11 +254,6 @@
         alert("Error connecting to the server. Please try again.");
       }
     });
-
-    // Redirect for download hexium designer (assuming a link/button exists)
-    // Example: document.getElementById("downloadHexiumDesigner").addEventListener("click", () => {
-    //   window.location.href = "/pricing";
-    // });
   </script>
 </body>
 </html>
