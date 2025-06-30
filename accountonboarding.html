@@ -3,224 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/3yfNr0Bh/hexium-1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/hexium.png">
   <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations.">
   <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript">
   <title>Create an account - Hexium</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles/home.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    body {
-      background: linear-gradient(135deg, #0c0f1d 0%, #1a1f3d 100%);
-      color: #e0e0ff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(10, 12, 28, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(80, 100, 255, 0.1);
-    }
-    
-    .toolbar img {
-      height: 40px;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    
-    .nav-links a {
-      color: #b0b0ff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    .nav-links a:hover {
-      color: #34C286;
-    }
-    
-    main {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+    input:focus {
+      outline: none !important;
+      box-shadow: none !important;
     }
     
     .step {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      max-width: 600px;
-      width: 100%;
-      padding: 2rem;
-      background: rgba(20, 22, 40, 0.8);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(80, 100, 255, 0.1);
     }
     
     .step.current {
       display: flex;
-      animation: fadeIn 0.5s ease;
-    }
-    
-    .step img {
-      height: 120px;
-      margin-bottom: 1rem;
-    }
-    
-    .step-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      width: 100%;
-      text-align: center;
-    }
-    
-    h2 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-      color: white;
-      text-shadow: 0 0 10px rgba(80, 180, 255, 0.5);
-    }
-    
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 500px;
-      color: #c0c0ff;
-    }
-    
-    input {
-      width: 100%;
-      max-width: 350px;
-      height: 50px;
-      padding: 0 20px;
-      border-radius: 25px;
-      background: rgba(30, 30, 50, 0.7);
-      border: 1px solid rgba(80, 100, 255, 0.2);
-      color: white;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-    
-    input:focus {
-      outline: none;
-      border-color: #34C286;
-      box-shadow: 0 0 0 3px rgba(52, 194, 134, 0.3);
-    }
-    
-    input::placeholder {
-      color: #9090c0;
-    }
-    
-    button {
-      width: 100%;
-      max-width: 350px;
-      height: 50px;
-      border-radius: 25px;
-      background: #34C286;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    button:hover {
-      background: #2daa75;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(52, 194, 134, 0.4);
-    }
-    
-    #download {
-      background: transparent;
-      border: 1px solid #34C286;
-    }
-    
-    #download:hover {
-      background: rgba(52, 194, 134, 0.1);
-    }
-    
-    footer {
-      padding: 1.5rem;
-      background: rgba(10, 12, 28, 0.8);
-      text-align: center;
-      font-size: 0.9rem;
-      color: #9090c0;
-      border-top: 1px solid rgba(80, 100, 255, 0.1);
-    }
-    
-    .step-indicator {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    
-    .step-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(80, 100, 255, 0.3);
-    }
-    
-    .step-dot.active {
-      background: #34C286;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @media (max-width: 768px) {
-      .toolbar {
-        padding: 1rem;
-      }
-      
-      .nav-links {
-        gap: 1rem;
-      }
-      
-      .step {
-        padding: 1.5rem;
-      }
-      
-      h2 {
-        font-size: 1.7rem;
-      }
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
   <header class="toolbar">
     <a href="/" aria-label="Hexium Home">
       <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
@@ -233,256 +41,253 @@
     </nav>
   </header>
 
-  <main>
+  <main class="flex-grow flex items-center justify-center">
     <!-- Step 1: Username -->
     <div id="step1" class="step current">
-      <img src="/img/username.svg" alt="Username">
-      <div class="step-content">
-        <h2>Welcome to the Hexium community!</h2>
-        <p>Ready to join? Type a username below and see if it is available to use.</p>
-        <input 
-          type="text" 
-          id="username" 
-          name="username" 
-          minlength="3"
-          maxlength="20"
-          placeholder="Create a username"
-        >
-        <button id="continue1">
-          Continue
-        </button>
-      </div>
-      <div class="step-indicator">
-        <div class="step-dot active"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-      </div>
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="/img/username.svg" style="margin: 10px;">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              Welcome to the Hexium community!
+            </h2>
+            <p style="font-size: 16px;">Ready to join? Type a username below and see if it is available to use.</p>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              minlength="3"
+              maxlength="20"
+              placeholder="Create a username"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+            >
+            <button 
+              id="continue1"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
     
     <!-- Step 2: Password -->
     <div id="step2" class="step">
-      <img src="/img/password.svg" alt="Password">
-      <div class="step-content">
-        <h2>Secure your account</h2>
-        <p>Create a password that's secure, yet easy to remember.</p>
-        <input 
-          type="password" 
-          id="password" 
-          name="password" 
-          minlength="8"
-          placeholder="Create a password"
-        >
-        <button id="continue2">
-          Continue
-        </button>
-      </div>
-      <div class="step-indicator">
-        <div class="step-dot"></div>
-        <div class="step-dot active"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-      </div>
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="/img/password.svg" style="margin: 10px;">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              Secure your account.
+            </h2>
+            <p style="font-size: 20px;">Create a password that's secure, yet easy to remember.</p>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              minlength="8"
+              placeholder="Create a password"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"          >
+            <button 
+              id="continue2"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"          >
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
     
     <!-- Step 3: Birthdate -->
     <div id="step3" class="step">
-      <img src="/img/birthdate.svg" alt="Birthdate">
-      <div class="step-content">
-        <h2>What's your birthdate?</h2>
-        <p>We use your birthdate to create an age-appropriate experience for children.</p>
-        <input 
-          type="date" 
-          id="birthdate" 
-          name="birthdate" 
-          placeholder="dd/mm/yyyy"
-        >
-        <button id="continue3">
-          Continue
-        </button>
-      </div>
-      <div class="step-indicator">
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot active"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-      </div>
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="/img/birthdate.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              What's your birthdate?
+            </h2>
+            <p style="font-size: 18px;">We use your birthdate to create an age-appropriate experience for children.</p>
+            <input 
+              type="date" 
+              id="birthdate" 
+              name="birthdate" 
+              placeholder="dd/mm/yyyy"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+          
+            <button 
+              id="continue3"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+      </section>
     </div>
     
     <!-- Step 4: Email -->
     <div id="step4" class="step">
-      <img src="/img/email.svg" alt="Email">
-      <div class="step-content">
-        <h2>What's your email address?</h2>
-        <p>Your email can be used to recover your account if you forget your password and for 2-factor authentication.</p>
-        <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          placeholder="example@example.com"
-        >
-        <button id="continue4">
-          Continue
-        </button>
-      </div>
-      <div class="step-indicator">
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot active"></div>
-        <div class="step-dot"></div>
-      </div>
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="/img/email.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              What's your email address?
+            </h2>
+            <p style="font-size: 18px;">Your email can be used to recover your account if you forget your password and for 2-factor authentication.</p>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="example@example.com"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+          
+            <button 
+              id="continue4"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+      </section>
     </div>
     
     <!-- Step 5: Final -->
     <div id="step5" class="step">
-      <img src="/img/exit-onboarding.svg" alt="Welcome">
-      <div class="step-content">
-        <h2>Welcome, <span class="username">User</span>!</h2>
-        <p>Now you can explore Hexium Canvas! Make sure to verify your email address to access more features.</p>
-        <button id="download">
-          Download Hexium Designer
-        </button>
-        <button id="continue5">
-          Continue
-        </button>
-      </div>
-      <div class="step-indicator">
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot"></div>
-        <div class="step-dot active"></div>
-      </div>
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="/img/exit-onboarding.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              <span>Welcome, </span>
+              <span class="username"></span>
+              <span>!</span>
+            </h2>
+            <p style="font-size: 18px;">Now you can explore Hexium Canvas! Make sure to verify your email address to access more features.</p>
+          
+            <button 
+              id="download"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+              Download Hexium Designer
+            </button>
+            <button 
+              id="continue5"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
-  <footer class="main-footer">
-    <div class="container">
-      <p>&copy; 2025 Hexium Technologies. All rights reserved. Hexium Technologies is not a registered company. Not affiliated with Scratch, TurboWarp or PenguinMod.</p>
-    </div>
+  <footer class="footer p-4 bg-[#222] text-white text-center">
+    <p>&copy; 2025 Hexium. All rights reserved.</p>
   </footer>
 
   <script>
-    // Store user data
-    const userData = {
-      username: '',
-      password: '',
-      birthdate: '',
-      email: ''
-    };
-    
-    // Track current step
-    let currentStep = 1;
-    const totalSteps = 5;
-    
-    // Move to the next step
-    function nextStep() {
-      // Hide current step
-      document.getElementById(`step${currentStep}`).classList.remove('current');
-      
-      // Move to next step
-      currentStep++;
-      
-      // Show next step
-      document.getElementById(`step${currentStep}`).classList.add('current');
-      
-      // Update step indicators
-      updateStepIndicators();
-      
-      // If we're on the final step, set the username
-      if (currentStep === 5) {
-        document.querySelector('.username').textContent = userData.username;
+    // Validate username format (simple alphanumeric, 3-20 chars)
+    function validateUsername(name) {
+      return /^[a-zA-Z0-9_-]{3,20}$/.test(name);
+    }
+    // Validate email using simple regex
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Basic password validation: min 8 chars
+    function validatePassword(pwd) {
+      return pwd.length >= 8;
+    }
+
+    // Birthdate check (must be at least 13 years old)
+    function validateBirthdate(dateStr) {
+      if (!dateStr) return false;
+      const today = new Date();
+      const birthDate = new Date(dateStr);
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        return age - 1 >= 13;
+      }
+      return age >= 13;
+    }
+
+    // Steps
+    const steps = ["step1", "step2", "step3", "step4", "step5"];
+    let currentStepIndex = 0;
+    const userData = {};
+
+    function showStep(index) {
+      steps.forEach((id, i) => {
+        document.getElementById(id).classList.toggle("current", i === index);
+      });
+      currentStepIndex = index;
+      if (index === steps.length - 1) {
+        document.querySelector("#step5 .username").textContent = userData.username || "";
       }
     }
-    
-    // Update step indicators
-    function updateStepIndicators() {
-      const indicators = document.querySelectorAll('.step-dot');
-      indicators.forEach((dot, index) => {
-        if (index < currentStep - 1) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-    
-    // Event listeners for each step
-    document.getElementById('continue1').addEventListener('click', () => {
-      const username = document.getElementById('username').value.trim();
-      if (username.length < 3) {
-        alert('Username must be at least 3 characters');
+
+    document.getElementById("continue1").addEventListener("click", () => {
+      const username = document.getElementById("username").value.trim();
+      if (!validateUsername(username)) {
+        alert("Please enter a valid username (3-20 letters, numbers, _ or -).");
         return;
       }
+      // Simulate username availability check (always available here)
       userData.username = username;
-      nextStep();
+      showStep(1);
     });
-    
-    document.getElementById('continue2').addEventListener('click', () => {
-      const password = document.getElementById('password').value;
-      if (password.length < 8) {
-        alert('Password must be at least 8 characters');
+
+    document.getElementById("continue2").addEventListener("click", () => {
+      const password = document.getElementById("password").value;
+      if (!validatePassword(password)) {
+        alert("Password must be at least 8 characters long.");
         return;
       }
       userData.password = password;
-      nextStep();
+      showStep(2);
     });
-    
-    document.getElementById('continue3').addEventListener('click', () => {
-      const birthdate = document.getElementById('birthdate').value;
-      if (!birthdate) {
-        alert('Please enter your birthdate');
+
+    document.getElementById("continue3").addEventListener("click", () => {
+      const birthdate = document.getElementById("birthdate").value;
+      if (!validateBirthdate(birthdate)) {
+        alert("You must be at least 13 years old.");
         return;
       }
       userData.birthdate = birthdate;
-      nextStep();
+      showStep(3);
     });
-    
-    document.getElementById('continue4').addEventListener('click', () => {
-      const email = document.getElementById('email').value.trim();
-      if (!email.includes('@') || !email.includes('.')) {
-        alert('Please enter a valid email address');
+
+    document.getElementById("continue4").addEventListener("click", () => {
+      const email = document.getElementById("email").value.trim();
+      if (!validateEmail(email)) {
+        alert("Please enter a valid email address.");
         return;
       }
       userData.email = email;
-      nextStep();
+      showStep(4);
     });
-    
-    // Final step - send data and redirect
-    document.getElementById('continue5').addEventListener('click', () => {
-      // Format the birthdate as YYYY-MM-DD
-      const formattedBirthday = userData.birthdate;
-      
-      // Create the API URL
-      const apiUrl = `/api/accounts/new?username=${encodeURIComponent(userData.username)}&password=${encodeURIComponent(userData.password)}&school=null&birthday=${encodeURIComponent(formattedBirthday)}`;
-      
-      // Send GET request
-      fetch(apiUrl)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          // Redirect after successful request
-          window.location.href = 'https://hexiumapps.com/authenticate';
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          // Redirect even if there's an error
-          window.location.href = 'https://hexiumapps.com/authenticate';
-        });
+
+    document.getElementById("continue5").addEventListener("click", () => {
+      // Could redirect to dashboard or homepage after signup
+      alert("Account creation complete! Welcome to Hexium.");
+      // For demo, just reset form
+      location.reload();
     });
-    
-    // Download button
-    document.getElementById('download').addEventListener('click', () => {
-      alert('Hexium Designer download would start here');
+
+    document.getElementById("download").addEventListener("click", () => {
+      window.open("https://hexiumapps.com/hexium-designer/download", "_blank");
     });
-    
-    // Initialize step indicators
-    updateStepIndicators();
   </script>
 </body>
 </html>
