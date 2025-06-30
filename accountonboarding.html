@@ -1,152 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/hexium.png">
-  <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations.">
-  <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript">
-  <title>Create an account - Hexium</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/styles/home.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
-  <style>
-    input:focus {
-      outline: none !important;
-      box-shadow: none !important;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Create Account</title>
+<style>
+  /* Ensure background color is applied correctly */
+  body {
+    background-color: #f0f2f5; /* your desired background */
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  .container {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  img.logo {
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 80px;
+    height: auto;
+  }
+  form > div {
+    margin-bottom: 1rem;
+  }
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  .message {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+</style>
 </head>
-<body class="min-h-screen flex flex-col text-white bg-black font-inter">
-  <header class="toolbar p-4 flex justify-between items-center">
-    <a href="/" aria-label="Hexium Home">
-      <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
-    </a>
-    <nav class="nav-links space-x-4 text-sm sm:text-base" role="navigation" aria-label="Primary Navigation">
-      <a href="https://forums.hexiumapps.com/">Forums</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/about">About</a>
-      <a href="/account">Account</a>
-    </nav>
-  </header>
-
-  <main class="flex-grow flex items-center justify-center">
-    <section class="hero py-16 sm:py-20 text-center w-full px-4 max-w-screen-sm">
-      <div id="step-container" class="flex flex-col items-center gap-4 transition-all duration-300">
-        <!-- Steps inserted here by JS -->
+<body>
+  <div class="container">
+    <img class="logo" src="/img/logo.svg" alt="Logo" />
+    <form id="createAccountForm">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" required autocomplete="username" />
       </div>
-    </section>
-  </main>
-
-  <footer class="main-footer py-8 text-center text-xs sm:text-sm">
-    <div class="container mx-auto px-4">
-      <p>&copy; 2025 Hexium Technologies. All rights reserved. Hexium Technologies is not a registered company. Not affiliated with Scratch, TurboWarp or PenguinMod.</p>
-    </div>
-  </footer>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="new-password" />
+      </div>
+      <div>
+        <label for="birthday">Birthday (YYYY-MM-DD)</label>
+        <input id="birthday" name="birthday" type="date" pattern="\d{4}-\d{2}-\d{2}" required />
+      </div>
+      <button type="submit">Create Account</button>
+    </form>
+    <div class="message" id="message"></div>
+  </div>
 
   <script>
-    const steps = [
-      {
-        id: 'username',
-        label: 'Welcome to the Hexium community!',
-        sub: 'Ready to join? Type a username below and see if it is available to use.',
-        type: 'text',
-        placeholder: 'Create a username',
-        image: 'username.svg',
-        attr: { minLength: 3, maxLength: 20 }
-      },
-      {
-        id: 'password',
-        label: 'Secure your account.',
-        sub: 'Create a password that’s secure, yet easy to remember.',
-        type: 'password',
-        placeholder: 'Create a password',
-        image: 'password.svg',
-        attr: { minLength: 8 }
-      },
-      {
-        id: 'birthdate',
-        label: 'What’s your birthdate?',
-        sub: 'We use your birthdate to create an age-appropriate experience for children.',
-        type: 'date',
-        placeholder: '',
-        image: 'birthdate.svg',
-        attr: {}
-      },
-      {
-        id: 'email',
-        label: 'What’s your email address?',
-        sub: 'Your email can be used to recover your account if you forget your password and for 2-factor authentication.',
-        type: 'email',
-        placeholder: 'example@example.com',
-        image: 'email.svg',
-        attr: {}
-      }
-    ];
+    const form = document.getElementById('createAccountForm');
+    const messageEl = document.getElementById('message');
 
-    let currentStep = 0;
-    const userData = {};
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      messageEl.textContent = '';
+      
+      const username = form.username.value.trim();
+      const password = form.password.value.trim();
+      const birthday = form.birthday.value;
 
-    function renderStep(stepIndex) {
-      const step = steps[stepIndex];
-      const container = document.getElementById('step-container');
-      container.innerHTML = `
-        <img src="${step.image}" class="mb-2">
-        <h2 class="text-2xl sm:text-3xl font-bold leading-snug">${step.label}</h2>
-        <p class="text-base sm:text-lg mb-2">${step.sub}</p>
-        <input 
-          id="input-${step.id}" 
-          name="${step.id}" 
-          type="${step.type}" 
-          placeholder="${step.placeholder}"
-          class="[width:75%] md:[width:350px] text-white bg-[#262626]" 
-          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 16px;"
-          ${Object.entries(step.attr).map(([k,v]) => `${k}="${v}"`).join(' ')}
-        >
-        <button 
-          onclick="nextStep()" 
-          class="[width:75%] md:[width:350px] bg-[#34C286] text-white mt-2" 
-          style="height: 38px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">
-          Continue
-        </button>
-      `;
-    }
-
-    function nextStep() {
-      const step = steps[currentStep];
-      const input = document.getElementById(`input-${step.id}`);
-      const value = input.value;
-
-      if (value.trim() === '' || (step.attr.minLength && value.length < step.attr.minLength)) {
-        alert(`Please enter a valid ${step.id}.`);
+      if (!username || !password || !birthday) {
+        messageEl.textContent = 'Please fill out all required fields.';
+        messageEl.style.color = 'red';
         return;
       }
 
-      userData[step.id] = value;
+      // Construct the URL with params
+      const url = new URL('/api/accounts/new', window.location.origin);
+      url.searchParams.set('username', username);
+      url.searchParams.set('password', password);
+      url.searchParams.set('school', 'null'); // as requested
+      url.searchParams.set('birthday', birthday);
 
-      currentStep++;
-      if (currentStep < steps.length) {
-        renderStep(currentStep);
-      } else {
-        const query = new URLSearchParams({
-          username: userData.username,
-          password: userData.password,
-          birthday: userData.birthdate || 'null',
-          school: 'null' // static as per example
+      try {
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
         });
-        fetch(`/api/accounts/new?${query}`, { method: 'GET' })
-          .then(() => {
-            window.location.href = 'https://hexiumapps.com/authenticate';
-          })
-          .catch(() => alert('Something went wrong creating the account.'));
-      }
-    }
+        if (!res.ok) throw new Error(`Server error: ${res.status}`);
 
-    document.addEventListener('DOMContentLoaded', () => {
-      renderStep(currentStep);
+        const data = await res.json();
+        // Assuming API returns success or error message
+        messageEl.textContent = data.message || 'Account created successfully!';
+        messageEl.style.color = 'green';
+
+        form.reset();
+      } catch (err) {
+        messageEl.textContent = `Error: ${err.message}`;
+        messageEl.style.color = 'red';
+      }
     });
   </script>
 </body>
