@@ -120,13 +120,6 @@
               placeholder="dd/mm/yyyy"
               class="[width:75%] md:[width:350px]"
               style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
-          
-            <button 
-              id="continue3"
-              class="[width:75%] md:[width:350px]"
-              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
-              Continue
-            </button>
           </div>
       </section>
     </div>
@@ -148,13 +141,6 @@
               placeholder="example@example.com"
               class="[width:75%] md:[width:350px]"
               style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
-          
-            <button 
-              id="continue4"
-              class="[width:75%] md:[width:350px]"
-              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
-              Continue
-            </button>
           </div>
       </section>
     </div>
@@ -190,10 +176,6 @@
     </div>
   </main>
 
-  <footer class="footer p-4 bg-[#222] text-white text-center">
-    <p>&copy; 2025 Hexium. All rights reserved.</p>
-  </footer>
-
   <script>
     // Validate username format (simple alphanumeric, 3-20 chars)
     function validateUsername(name) {
@@ -209,23 +191,10 @@
       return pwd.length >= 8;
     }
 
-    // Birthdate check (must be at least 13 years old)
-    function validateBirthdate(dateStr) {
-      if (!dateStr) return false;
-      const today = new Date();
-      const birthDate = new Date(dateStr);
-      const age = today.getFullYear() - birthDate.getFullYear();
-      const m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        return age - 1 >= 13;
-      }
-      return age >= 13;
-    }
-
     // Steps
     const steps = ["step1", "step2", "step3", "step4", "step5"];
     let currentStepIndex = 0;
-    const userData = {};
+    const userData = { school: null };
 
     function showStep(index) {
       steps.forEach((id, i) => {
@@ -259,11 +228,7 @@
     });
 
     document.getElementById("continue3").addEventListener("click", () => {
-      const birthdate = document.getElementById("birthdate").value;
-      if (!validateBirthdate(birthdate)) {
-        alert("You must be at least 13 years old.");
-        return;
-      }
+      const birthdate = document.getElementById("birthdate").value || null;
       userData.birthdate = birthdate;
       showStep(3);
     });
@@ -279,14 +244,21 @@
     });
 
     document.getElementById("continue5").addEventListener("click", () => {
-      // Could redirect to dashboard or homepage after signup
-      alert("Account creation complete! Welcome to Hexium.");
-      // For demo, just reset form
-      location.reload();
+      // Send GET request to /api/accounts/new
+      const username = encodeURIComponent(userData.username);
+      const password = encodeURIComponent(userData.password);
+      const school = userData.school ? encodeURIComponent(userData.school) : "null";
+      const birthday = userData.birthdate ? encodeURIComponent(userData.birthdate) : "null";
+
+      fetch(`/api/accounts/new?username=${username}&password=${password}&school=${school}&birthday=${birthday}`, {
+        method: "GET"
+      }).finally(() => {
+        window.location.href = "https://hexiumapps.com";
+      });
     });
 
     document.getElementById("download").addEventListener("click", () => {
-      window.open("https://hexiumapps.com/hexium-designer/download", "_blank");
+      window.location.href = "/pricing";
     });
   </script>
 </body>
