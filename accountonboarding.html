@@ -2,169 +2,334 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Account Creation Flow</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/hexium.png">
+  <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations.">
+  <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript">
+  <title>Create an account - Hexium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
+    input:focus {
+      outline: none !important;
+      box-shadow: none !important;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: #f9fafb;
-      color: #111827;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      border-radius: 8px;
-      width: 100%;
-      max-width: 420px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-    h2 {
-      font-weight: 600;
-      margin-bottom: 24px;
-      font-size: 1.75rem;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="tel"] {
-      width: 100%;
-      padding: 10px 14px;
-      margin-bottom: 20px;
-      border: 1.5px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="password"]:focus,
-    input[type="tel"]:focus {
-      border-color: #2563eb;
-      outline: none;
-    }
-    button {
-      width: 100%;
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #1e40af;
-    }
-    .hidden {
+    
+    .step {
       display: none;
     }
-    .nav-text {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 0.9rem;
-      color: #6b7280;
+    
+    .step.current {
+      display: flex;
     }
-    .nav-text a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
+    
+    .progress-bar {
+      width: 80%;
+      max-width: 350px;
+      height: 6px;
+      background-color: #262626;
+      border-radius: 3px;
+      margin: 20px auto;
+      overflow: hidden;
     }
-    .nav-text a:hover {
-      text-decoration: underline;
+    
+    .progress-fill {
+      height: 100%;
+      background-color: #34C286;
+      width: 0%;
+      transition: width 0.3s ease;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Page 1: Personal Information -->
-    <form id="page1">
-      <h2>Personal Information</h2>
-      <label for="firstName">First Name</label>
-      <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
-      <label for="lastName">Last Name</label>
-      <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
-      <button type="submit">Next</button>
-    </form>
+<body class="min-h-screen flex flex-col">
+  <header class="toolbar">
+    <a href="/" aria-label="Hexium Home">
+      <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
+    </a>
+    <nav class="nav-links" role="navigation" aria-label="Primary Navigation">
+      <a href="https://forums.hexiumapps.com/">Forums</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/account">Account</a>
+    </nav>
+  </header>
 
-    <!-- Page 2: Contact Information -->
-    <form id="page2" class="hidden">
-      <h2>Contact Information</h2>
-      <label for="email">Email Address</label>
-      <input id="email" name="email" type="email" required autocomplete="email" />
-      <label for="phone">Phone Number</label>
-      <input id="phone" name="phone" type="tel" pattern="^\+?[0-9\s\-]{7,15}$" placeholder="+1234567890" autocomplete="tel" />
-      <button type="submit">Next</button>
-    </form>
-
-    <!-- Page 3: Security Setup -->
-    <form id="page3" class="hidden">
-      <h2>Security Setup</h2>
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password" />
-      <label for="confirmPassword">Confirm Password</label>
-      <input id="confirmPassword" name="confirmPassword" type="password" required minlength="8" autocomplete="new-password" />
-      <button type="submit">Create Account</button>
-    </form>
-
-    <!-- Success Message -->
-    <div id="successMessage" class="hidden" style="text-align:center;">
-      <h2>Account Created!</h2>
-      <p>Thank you for signing up. Your account has been successfully created.</p>
+  <main class="flex-grow flex items-center justify-center">
+    <!-- Progress bar -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
     </div>
-  </div>
+    
+    <!-- Step 1: Username -->
+    <div id="step1" class="step current">
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="username.svg" style="margin: 10px;">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              Welcome to the Hexium community!
+            </h2>
+            <p style="font-size: 16px;">Ready to join? Type a username below and see if it is available to use.</p>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              minlength="3"
+              maxlength="20"
+              placeholder="Create a username"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+            >
+            <button 
+              id="continue1"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Step 2: Password -->
+    <div id="step2" class="step">
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="password.svg" style="margin: 10px;">
+            <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              Secure your account.
+            </h2>
+            <p style="font-size: 20px;">Create a password that's secure, yet easy to remember.</p>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              minlength="8"
+              placeholder="Create a password"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"          >
+            <button 
+              id="continue2"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"          >
+              Continue
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Step 3: Birthdate -->
+    <div id="step3" class="step">
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="birthdate.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              What's your birthdate?
+            </h2>
+            <p style="font-size: 18px;">We use your birthdate to create an age-appropriate experience for children.</p>
+            <input 
+              type="date" 
+              id="birthdate" 
+              name="birthdate" 
+              placeholder="dd/mm/yyyy"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+          
+            <button 
+              id="continue3"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+      </section>
+    </div>
+    
+    <!-- Step 4: Email -->
+    <div id="step4" class="step">
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="email.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              What's your email address?
+            </h2>
+            <p style="font-size: 18px;">Your email can be used to recover your account if you forget your password and for 2-factor authentication.</p>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="example@example.com"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+          
+            <button 
+              id="continue4"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+      </section>
+    </div>
+    
+    <!-- Step 5: Final -->
+    <div id="step5" class="step">
+      <section class="hero py-16 sm:py-20 text-center">
+        <div class="container mx-auto px-4 max-w-screen-sm">
+          <div class="sm:[width:480px] md:[width:540px] lg:[width:600px]" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <img src="exit-onboarding.svg" style="margin: 10px;">
+            <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+              <span>Welcome, </span>
+              <span class="username"></span>
+              <span>!</span>
+            </h2>
+            <p style="font-size: 18px;">Now you can explore Hexium Canvas! Make sure to verify your email address to access more features.</p>
+          
+            <button 
+              id="download"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"        >
+              Download Hexium Designer
+            </button>
+            <button 
+              id="continue5"
+              class="[width:75%] md:[width:350px]"
+              style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"        >
+              Continue
+            </button>
+          </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="main-footer py-8 text-center text-xs sm:text-sm">
+    <div class="container mx-auto px-4">
+      <p>&copy; 2025 Hexium Technologies. All rights reserved. Hexium Technologies is not a registered company. Not affiliated with Scratch, TurboWarp or PenguinMod.</p>
+    </div>
+  </footer>
 
   <script>
-    const page1 = document.getElementById('page1');
-    const page2 = document.getElementById('page2');
-    const page3 = document.getElementById('page3');
-    const successMessage = document.getElementById('successMessage');
-
-    page1.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Could add validation here if needed
-      page1.classList.add('hidden');
-      page2.classList.remove('hidden');
-    });
-
-    page2.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Could add validation here if needed
-      page2.classList.add('hidden');
-      page3.classList.remove('hidden');
-    });
-
-    page3.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const password = page3.password.value;
-      const confirmPassword = page3.confirmPassword.value;
-
-      if (password !== confirmPassword) {
-        alert('Passwords do not match.');
+    // Store user data
+    const userData = {
+      username: '',
+      password: '',
+      birthdate: '',
+      email: ''
+    };
+    
+    // Track current step
+    let currentStep = 1;
+    const totalSteps = 5;
+    
+    // Update progress bar
+    function updateProgress() {
+      const progressFill = document.getElementById('progress-fill');
+      const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+      progressFill.style.width = `${progressPercentage}%`;
+    }
+    
+    // Move to the next step
+    function nextStep() {
+      // Hide current step
+      document.getElementById(`step${currentStep}`).classList.remove('current');
+      
+      // Move to next step
+      currentStep++;
+      
+      // Show next step
+      document.getElementById(`step${currentStep}`).classList.add('current');
+      
+      // Update progress bar
+      updateProgress();
+      
+      // If we're on the final step, set the username
+      if (currentStep === 5) {
+        document.querySelector('.username').textContent = userData.username;
+      }
+    }
+    
+    // Event listeners for each step
+    document.getElementById('continue1').addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      if (username.length < 3) {
+        alert('Username must be at least 3 characters');
         return;
       }
-
-      // Final submission logic here (e.g. send to backend)
-
-      page3.classList.add('hidden');
-      successMessage.classList.remove('hidden');
+      userData.username = username;
+      nextStep();
     });
+    
+    document.getElementById('continue2').addEventListener('click', () => {
+      const password = document.getElementById('password').value;
+      if (password.length < 8) {
+        alert('Password must be at least 8 characters');
+        return;
+      }
+      userData.password = password;
+      nextStep();
+    });
+    
+    document.getElementById('continue3').addEventListener('click', () => {
+      const birthdate = document.getElementById('birthdate').value;
+      if (!birthdate) {
+        alert('Please enter your birthdate');
+        return;
+      }
+      userData.birthdate = birthdate;
+      nextStep();
+    });
+    
+    document.getElementById('continue4').addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+      userData.email = email;
+      nextStep();
+    });
+    
+    // Final step - send data and redirect
+    document.getElementById('continue5').addEventListener('click', () => {
+      // Format the birthdate as YYYY-MM-DD
+      const formattedBirthday = userData.birthdate;
+      
+      // Create the API URL
+      const apiUrl = `/api/accounts/new?username=${encodeURIComponent(userData.username)}&password=${encodeURIComponent(userData.password)}&school=null&birthday=${encodeURIComponent(formattedBirthday)}`;
+      
+      // Send GET request
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          // Redirect after successful request
+          window.location.href = 'https://hexiumapps.com/authenticate';
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Redirect even if there's an error (as requested)
+          window.location.href = 'https://hexiumapps.com/authenticate';
+        });
+    });
+    
+    // Download button (optional functionality)
+    document.getElementById('download').addEventListener('click', () => {
+      alert('Hexium Designer download would start here');
+      // In a real implementation, this would download the software
+    });
+    
+    // Initialize progress bar
+    updateProgress();
   </script>
 </body>
 </html>
