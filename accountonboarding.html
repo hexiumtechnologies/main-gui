@@ -1,130 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Create Account</title>
-<style>
-  /* Ensure background color is applied correctly */
-  body {
-    background-color: #f0f2f5; /* your desired background */
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-  }
-  .container {
-    max-width: 400px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  img.logo {
-    display: block;
-    margin: 0 auto 1rem auto;
-    width: 80px;
-    height: auto;
-  }
-  form > div {
-    margin-bottom: 1rem;
-  }
-  label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-  }
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  button {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
-  }
-  .message {
-    margin-top: 1rem;
-    font-weight: 600;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/hexium.png" />
+  <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations." />
+  <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript" />
+  <title>Create an account - Hexium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/styles/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
+  <style>
+    input:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  </style>
 </head>
-<body>
-  <div class="container">
-    <img class="logo" src="/img/logo.svg" alt="Logo" />
-    <form id="createAccountForm">
-      <div>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" required autocomplete="username" />
+<body class="min-h-screen flex flex-col">
+  <header class="toolbar">
+    <a href="/" aria-label="Hexium Home">
+      <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
+    </a>
+    <nav class="nav-links" role="navigation" aria-label="Primary Navigation">
+      <a href="https://forums.hexiumapps.com/">Forums</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/account">Account</a>
+    </nav>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center">
+    <section class="hero py-16 sm:py-20 text-center w-full max-w-screen-sm px-4">
+      <!-- Step Containers -->
+      <div id="step-username" class="step flex flex-col items-center gap-4">
+        <img src="username.svg" alt="Username Icon" style="margin:10px" />
+        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          Welcome to the Hexium community!
+        </h2>
+        <p style="font-size: 16px;">Ready to join? Type a username below and see if it is available to use.</p>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          minlength="3"
+          maxlength="20"
+          placeholder="Create a username"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+          autocomplete="off"
+          required
+        />
+        <button
+          id="continue-username"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+        >
+          Continue
+        </button>
       </div>
-      <div>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" required autocomplete="new-password" />
+
+      <div id="step-password" class="step hidden flex flex-col items-center gap-4">
+        <img src="password.svg" alt="Password Icon" style="margin:10px" />
+        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          Secure your account.
+        </h2>
+        <p style="font-size: 20px;">Create a password that’s secure, yet easy to remember.</p>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          minlength="8"
+          placeholder="Create a password"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+          required
+        />
+        <button
+          id="continue-password"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+        >
+          Continue
+        </button>
       </div>
-      <div>
-        <label for="birthday">Birthday (YYYY-MM-DD)</label>
-        <input id="birthday" name="birthday" type="date" pattern="\d{4}-\d{2}-\d{2}" required />
+
+      <div id="step-birthdate" class="step hidden flex flex-col items-center gap-4 scale-90">
+        <img src="birthdate.svg" alt="Birthdate Icon" style="margin:10px" />
+        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          What’s your birthdate?
+        </h2>
+        <p style="font-size: 18px;">We use your birthdate to create an age-appropriate experience for children.</p>
+        <input
+          type="date"
+          id="birthdate"
+          name="birthdate"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+          required
+        />
+        <button
+          id="continue-birthdate"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+        >
+          Continue
+        </button>
       </div>
-      <button type="submit">Create Account</button>
-    </form>
-    <div class="message" id="message"></div>
-  </div>
+
+      <div id="step-email" class="step hidden flex flex-col items-center gap-4 scale-90">
+        <img src="email.svg" alt="Email Icon" style="margin:10px" />
+        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          What’s your email address?
+        </h2>
+        <p style="font-size: 18px;">
+          Your email can be used to recover your account if you forget your password and for 2-factor authentication.
+        </p>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@example.com"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+          required
+        />
+        <button
+          id="continue-email"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+        >
+          Continue
+        </button>
+      </div>
+
+      <div id="step-school" class="step hidden flex flex-col items-center gap-4 scale-90">
+        <img src="school.svg" alt="School Icon" style="margin:10px" />
+        <h2 class="text-xl sm:text-2xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          What school do you attend? (Optional)
+        </h2>
+        <p style="font-size: 18px;">This helps us personalize your experience better.</p>
+        <input
+          type="text"
+          id="school"
+          name="school"
+          placeholder="Your school name"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; padding: 14px 19px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #262626; color: white; font-size: 16px; outline: none;"
+        />
+        <button
+          id="continue-school"
+          class="[width:75%] md:[width:350px]"
+          style="height: 38px; border-radius: 25px; border-top: 1px solid rgba(255, 255, 255, 0.10); background: #34C286; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center;"
+        >
+          Continue
+        </button>
+      </div>
+
+      <div id="step-finish" class="step hidden flex flex-col items-center gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold leading-snug flex gap-2 justify-center" style="font-weight:800;">
+          Account Created Successfully!
+        </h2>
+        <p style="font-size: 20px;">Welcome to Hexium. You can now explore and build amazing projects.</p>
+        <a href="/" class="text-sm text-blue-400 underline mt-4">Go to homepage</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center p-4 border-t border-gray-700 text-gray-400 text-xs">
+    &copy; 2025 Hexium. All rights reserved.
+  </footer>
 
   <script>
-    const form = document.getElementById('createAccountForm');
-    const messageEl = document.getElementById('message');
+    // Steps in order
+    const steps = [
+      'step-username',
+      'step-password',
+      'step-birthdate',
+      'step-email',
+      'step-school',
+      'step-finish'
+    ];
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      messageEl.textContent = '';
-      
-      const username = form.username.value.trim();
-      const password = form.password.value.trim();
-      const birthday = form.birthday.value;
+    let currentStepIndex = 0;
 
-      if (!username || !password || !birthday) {
-        messageEl.textContent = 'Please fill out all required fields.';
-        messageEl.style.color = 'red';
+    function showStep(index) {
+      steps.forEach((id, i) => {
+        document.getElementById(id).classList.toggle('hidden', i !== index);
+      });
+    }
+
+    showStep(currentStepIndex);
+
+    // Username validation function (basic)
+    function isUsernameValid(username) {
+      return /^[a-zA-Z0-9_]{3,20}$/.test(username);
+    }
+
+    // Password validation function (basic)
+    function isPasswordValid(password) {
+      return password.length >= 8;
+    }
+
+    // Email validation
+    function isEmailValid(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    document.getElementById('continue-username').addEventListener('click', () => {
+      const usernameInput = document.getElementById('username');
+      if (!isUsernameValid(usernameInput.value)) {
+        alert('Username must be 3-20 characters and contain only letters, numbers, and underscores.');
+        usernameInput.focus();
         return;
       }
+      // Here you could add async check for username availability if needed
+      currentStepIndex++;
+      showStep(currentStepIndex);
+    });
 
-      // Construct the URL with params
-      const url = new URL('/api/accounts/new', window.location.origin);
-      url.searchParams.set('username', username);
-      url.searchParams.set('password', password);
-      url.searchParams.set('school', 'null'); // as requested
-      url.searchParams.set('birthday', birthday);
-
-      try {
-        const res = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        if (!res.ok) throw new Error(`Server error: ${res.status}`);
-
-        const data = await res.json();
-        // Assuming API returns success or error message
-        messageEl.textContent = data.message || 'Account created successfully!';
-        messageEl.style.color = 'green';
-
-        form.reset();
-      } catch (err) {
-        messageEl.textContent = `Error: ${err.message}`;
-        messageEl.style.color = 'red';
+    document.getElementById('continue-password').addEventListener('click', () => {
+      const passwordInput = document.getElementById('password');
+      if (!isPasswordValid(passwordInput.value)) {
+        alert('Password must be at least 8 characters long.');
+        passwordInput.focus();
+        return;
       }
+      currentStepIndex++;
+      showStep(currentStepIndex);
+    });
+
+    document.getElementById('continue-birthdate').addEventListener('click', () => {
+      const birthdateInput = document.getElementById('birthdate');
+      if (!birthdateInput.value) {
+        alert('Please enter your birthdate.');
+        birthdateInput.focus();
+        return;
+      }
+      // Optionally validate age here
+      currentStepIndex++;
+      showStep(currentStepIndex);
+    });
+
+    document.getElementById('continue-email').addEventListener('click', () => {
+      const emailInput = document.getElementById('email');
+      if (!isEmailValid(emailInput.value)) {
+        alert('Please enter a valid email address.');
+        emailInput.focus();
+        return;
+      }
+      currentStepIndex++;
+      showStep(currentStepIndex);
+    });
+
+    document.getElementById('continue-school').addEventListener('click', () => {
+      // School is optional, no validation needed
+      currentStepIndex++;
+      showStep(currentStepIndex);
     });
   </script>
 </body>
