@@ -1,101 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="img/hexium.png">
-  <meta name="description" content="Hexium is a powerful, easy-to-use software suite that lets anyone build projects effortlessly, from simple ideas to advanced creations.">
-  <meta name="keywords" content="Hexium, Technology, Homelab, Software, Creative, Uniy, Scratch, Adobe, TurboWarp, PenguinMod, IDE, vscode, dev, Web, HTML, CSS, JavaScript">
-  <title>Hexium</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/styles/home.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet" />
-</head>
-<body class="min-h-screen flex flex-col">
-  <header class="toolbar">
-    <a href="/" aria-label="Hexium Home">
-      <img src="https://i.ibb.co/3yfNr0Bh/hexium-1.png" alt="Hexium Logo" />
-    </a>
-    <nav class="nav-links" role="navigation" aria-label="Primary Navigation">
-      <a href="https://forums.hexiumapps.com/">Forums</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/about">About</a>
-      <a href="/account">Account</a>
-    </nav>
-  </header>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hexium - Your suite for your things.</title>
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="navicon"><img src="img/HexiumIconBW.svg"></div>
+            <div class="navlinks">
+                <a href="/software">Software</a>
+                <a href="https://forums.hexiumapps.com">Forums</a>
+                <a href="/pricing">Pricing</a>
+            </div>
+            <div class="navicon"><img id="ProfilePicture" src="img/defaultpfp-2.png" style="border-radius: 200px; width: 54px; height: 54px; z-index: 1;"></div>
+        </nav>
 
-<main class="flex-grow flex items-center justify-center">
-  <section class="hero py-16 sm:py-20 text-center">
-    <div class="container mx-auto px-4 max-w-screen-sm">
-      <div class="hero-content">
-        <h2 class="text-3xl sm:text-5xl font-bold mb-4 leading-snug">
-          The software suite for<br />
-          <span id="typewriter" class="highlight-text"></span><span class="cursor"></span>
-        </h2>
-        <p class="text-base sm:text-lg text-gray-300 mb-6">Hexium offers tools to create what you want, no matter who you are. Unleash your full potential today with the best tools, for free.</p>
-        <a href="/pricing" class="inline-flex items-center gap-2 bg-white text-black font-semibold px-5 sm:px-6 py-3 rounded-lg text-sm sm:text-base">
-          Get Started
-          <span class="material-icons-round text-lg">north_east</span>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-
-  <footer class="main-footer py-8 text-center text-xs sm:text-sm">
-    <div class="container mx-auto px-4">
-      <p>&copy; 2025 Hexium Technologies. All rights reserved. Hexium Technologies is not a registered company. Not affiliated with Scratch, TurboWarp or PenguinMod.</p>
-    </div>
-  </footer>
-
-  <script>
-    const words = [
-      "creatives.",
-      "programmers.",
-      "designers.",
-      "developers.",
-      "scratchers.",
-      "modellers.",
-      "anyone."
-    ];
-
-    const typewriterElement = document.getElementById("typewriter");
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingSpeed = 120;
-    const deletingSpeed = 60;
-    const delayBetweenWords = 1500;
-
-    function type() {
-      const currentWord = words[wordIndex];
-      if (!isDeleting) {
-        typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(type, delayBetweenWords);
-        } else {
-          setTimeout(type, typingSpeed);
-        }
-      } else {
-        typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(type, typingSpeed);
-        } else {
-          setTimeout(type, deletingSpeed);
-        }
-      }
-    }
-
-    type();
-  </script>
-</body>
+        <div class="banner" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+            <p class="noselect" style="margin: 40px; text-align: center; font-family: Figtree; font-size: 78px; font-style: normal; font-weight: 700; letter-spacing: -2.34px; position: absolute; filter: blur(39.5px);">
+                <span style="color: #2FC284;">Your </span>
+                <span style="color: rgba(255, 255, 255, 0);">suite for </span>
+                <span style="color: #2FC284;">your </span>
+                <span style="color: rgba(255, 255, 255, 0);">things.</span>
+            </p>
+            <p style="margin: 40px; text-align: center; font-family: Figtree; font-size: 78px; font-style: normal; font-weight: 700; letter-spacing: -2.34px; position: absolute;">
+                <span style="color: #2FC284;">Your </span>
+                <span style="color: #FFF;">suite for </span>
+                <span style="color: #2FC284;">your </span>
+                <span style="color: #FFF;">things.</span>
+            </p>
+        </div>
+    </body>
 </html>
