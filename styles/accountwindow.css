@@ -1,0 +1,69 @@
+body {
+    background-image: url(/img/login-background.png);
+    background-size: cover;
+}
+
+
+.accountwindow {
+    display: flex;
+    width: 75%;
+    max-width: 500px;
+    padding: 44px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(13, 33, 25, 0.70);
+    justify-self: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    box-shadow: 0px 4px 34.7px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
+}
+
+.accountwindow input {
+    display: flex;
+    padding: 16px 18px 17px 18px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Inter;
+}
+
+.accountwindow button {
+    display: flex;
+    padding: 16px 0 17px 0;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.10);
+    background: #2FC284;
+    border-style: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: 0.3s;
+}
+
+.accountwindow button:hover {
+    scale: 1.025;
+    color: black;
+    background-color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #ffffff;
+    opacity: 0.4;
+}
