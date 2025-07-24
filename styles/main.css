@@ -29,8 +29,8 @@ nav {
 
 .navlinks {
     display: flex;
-    height: 70px;
-    padding: 0px 32px;
+    height: 66px;
+    padding: 0px 28px;
     align-items: center;
     gap: 26px;
     border-radius: 59px;
@@ -43,8 +43,8 @@ nav {
 
 .navicon {
     display: flex;
-    width: 70px;
-    height: 70px;
+    width: 66px;
+    height: 66px;
     justify-content: center;
     align-items: center;
     gap: 32px;
@@ -78,7 +78,7 @@ nav {
 }
 
 nav:hover {
-    scale: 1.05;
+    scale: 1.025;
 }
 
 .noselect {
